@@ -1,0 +1,5 @@
+FROM maven
+# Install packages
+RUN apt-get update && apt install -y git
+# Clear cache
+RUN apt-get clean
