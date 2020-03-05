@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 pipeline 
 {
-  agent { dockerfile } 
+  agent { dockerfile true } 
 // In order to use this option, the Jenkinsfile must be loaded from either a Multibranch Pipeline or a Pipeline from SCM
   {
     stage('Copy source')
