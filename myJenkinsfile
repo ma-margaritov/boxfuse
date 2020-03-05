@@ -1,24 +1,21 @@
 #!/usr/bin/env groovy
-pipeline 
+pipeline
 {
-  agent { dockerfile true } 
-// In order to use this option, the Jenkinsfile must be loaded from either a Multibranch Pipeline or a Pipeline from SCM
+  agent { dockerfile true }
+    stages
   {
     stage('Copy source')
-	{
-      steps
-	  {
-        git 'https://github.com/ma-margaritov/boxfuse.git'
-      }
+    {
+      steps { git 'https://github.com/ma-margaritov/boxfuse.git' }
     }
     stage('Build war')
-	{
+    {
       steps { sh 'mvn package' }
     }
     stage('Make docker image')
-	{
+        {
       steps { sh 'docker build --tag=boxfuse' }
-	  // && docker push'
+          // && docker push'
     }
-}
+   }
 }
