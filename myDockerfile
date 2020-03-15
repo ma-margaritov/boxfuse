@@ -1,5 +1,6 @@
 FROM maven
 # Install packages
 RUN apt-get update && apt install -y git docker.io
+USER root
 # Clear cache
-#RUN apt-get clean
+# RUN apt-get clean
