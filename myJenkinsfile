@@ -1,0 +1,26 @@
+pipeline
+{
+  agent { 
+         dockerfile 
+         {
+          filename 'myDockerfile'
+          dir '/home/ubuntu/boxfuse'
+         }
+        }
+    stages
+  {
+    stage('Copy source')
+    {
+      steps { git 'https://github.com/ma-margaritov/boxfuse.git' }
+    }
+    stage('Build war')
+    {
+      steps { sh 'mvn package' }
+    }
+    stage('Make docker image')
+        {
+      steps { sh 'docker build -t boxfuse .' }
+          // && docker push'
+    }
+   }
+}
