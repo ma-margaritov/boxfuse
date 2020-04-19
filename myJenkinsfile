@@ -6,6 +6,9 @@ pipeline
           filename 'myDockerfile'
          }
         }
+
+    options { timestamps() }
+
     stages
   {
     stage('Copy source')
